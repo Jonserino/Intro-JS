@@ -1,0 +1,9 @@
+body {
+    background-color: #36393f;
+    color: white;
+}
+
+.guessNumber {
+    text-align: center;
+    padding-top: 500px;
+}
