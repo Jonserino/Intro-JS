@@ -3,27 +3,29 @@ function getRandomInt(max) {
 }
 
 
-var correctNumber = getRandomInt;
-console.log(getRandomInt(100));
+var correctNumber = getRandomInt(100);
 
 var guesses = 10;
 var button = document.querySelector("#buttonId");
 
-var guessedNumber = document.getElementById("gNumber").value;
-console.log(guessedNumber);
+var input = document.querySelector("#inputID");
 
 
-function checkNumber() {
-console.log(guessedNumber.correctNumber)
-if (guessedNumber == correctNumber) {
-    document.getElementById("answers").innerHTML = "Congratulations! You were correct, you got it within " + guesses + " guesses!";
-} else if (guessedNumber < correctNumber) {
-    guesses--;
-    document.getElementById("answers").innerHTML = "It's too low! " + guesses + " guesses left.";
-} else {
-    guesses--;
-    document.getElementById("answers").innerHTML = "Too high! " + guesses + " guesses left.";
-}
+function checkNumber(){
+    console.log(input.value)
+    console.log(correctNumber)
+    if (input.value == correctNumber) {
+        document.getElementById("output").innerHTML="Congratulations!";
+        
+    } else {
+        if (input.value > correctNumber) {
+            guesses--;
+            document.getElementById("output").innerHTML="Too high! " + guesses + " guesses left.";
+        } else {
+            guesses--;
+            document.getElementById("output").innerHTML="Too low! " + guesses + " guesses left.";
+        }
+    }
 }
 
 button.addEventListener("click", checkNumber);
