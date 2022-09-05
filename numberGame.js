@@ -9,6 +9,7 @@ var guesses = 10;
 
 var button = document.querySelector("#buttonId");
 var input = document.querySelector("#inputID");
+//var restart = document.querySelector("#restartID");
 
 
 function checkNumber(){
@@ -16,7 +17,6 @@ function checkNumber(){
     console.log(correctNumber)
     if (input.value == correctNumber) {
         document.getElementById("output").innerHTML="Congratulations! You were able to guess the correct number with " + guesses + " attempts remaining!";
-        
     } else {
         if (input.value > correctNumber) {
             guesses--;
@@ -25,6 +25,9 @@ function checkNumber(){
             guesses--;
             document.getElementById("output").innerHTML="Too low! " + guesses + " Guesses left.";
         }
+    }
+    if (guesses <= 0) {
+        document.getElementById("output").innerHTML="You ran out of attempts! :<";
     }
 }
 
