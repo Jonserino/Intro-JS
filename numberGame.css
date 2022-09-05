@@ -5,6 +5,7 @@ body {
     height: 100vh;
     color: white;
 }
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;;
@@ -15,6 +16,11 @@ body {
     100% {
         background-position: 0% 50%;
     }
+}
+
+input {
+    margin-bottom: 10px;
+    margin-top: -10px;
 }
 
 .guessNumber {
