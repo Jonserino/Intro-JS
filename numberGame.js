@@ -4,10 +4,11 @@ function getRandomInt(max) {
 
 
 var correctNumber = getRandomInt(100);
+console.log(correctNumber);
 
 var guesses = 10;
 
-var button = document.querySelector("#buttonId");
+var button = document.querySelector("#buttonID");
 var input = document.querySelector("#inputID");
 var reset = document.querySelector("#restartID");
 
@@ -32,7 +33,10 @@ function checkNumber(){
 }
 
 function restart() {
-    correctNumber = getRandomInt(100)
+    correctNumber = getRandomInt(100);
+    guesses = 10;
+    document.getElementById("output").innerHTML="";
+    input.value = "";
 }
 
 reset.addEventListener("click", restart);
