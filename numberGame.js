@@ -6,8 +6,8 @@ function getRandomInt(max) {
 var correctNumber = getRandomInt(100);
 
 var guesses = 10;
-var button = document.querySelector("#buttonId");
 
+var button = document.querySelector("#buttonId");
 var input = document.querySelector("#inputID");
 
 
