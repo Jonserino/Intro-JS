@@ -1,5 +1,5 @@
 function getRandomInt(max) {
-    return  Math.floor(Math.random() * max);
+    return  Math.floor(Math.random() * max + 1);
 }
 
 
@@ -15,15 +15,15 @@ function checkNumber(){
     console.log(input.value)
     console.log(correctNumber)
     if (input.value == correctNumber) {
-        document.getElementById("output").innerHTML="Congratulations!";
+        document.getElementById("output").innerHTML="Congratulations! You were able to guess the correct number with " + guesses + " attempts remaining!";
         
     } else {
         if (input.value > correctNumber) {
             guesses--;
-            document.getElementById("output").innerHTML="Too high! " + guesses + " guesses left.";
+            document.getElementById("output").innerHTML="Too high! " + guesses + " Guesses left.";
         } else {
             guesses--;
-            document.getElementById("output").innerHTML="Too low! " + guesses + " guesses left.";
+            document.getElementById("output").innerHTML="Too low! " + guesses + " Guesses left.";
         }
     }
 }
