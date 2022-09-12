@@ -13,9 +13,27 @@ var input = document.querySelector("#inputID");
 var reset = document.querySelector("#restartID");
 var playing = true;
 
+window.onload = (function(onload) {
+    return function(event) {
+        onload && onload(event);
+        function timerDown() {
+            console.log("Time left: " + timer)
+            var sec = 30;
+            var timer = setInterval(function(){
+            document.getElementById("timerDisplay").innerHTML="00: " + sec;
+            sec--;
+            if (sec < 0) {
+                clearInterval(timer);
+            }
+        }, 1000);
+    }
+
+}
+}(window.onload))
+
 function checkAttempts(){
     if (guesses <= 0) {
-        document.getElementById("output").innerHTML="You ran out of attempts :< ! Restart to play again :> !";
+        document.getElementById("output").innerHTML="You ran out of attempts :< ! Restart to play again :> ! The number was " + correctNumber;
         console.log("Guesses left: " + guesses);
         console.log("Player lost")
         playing = false;
