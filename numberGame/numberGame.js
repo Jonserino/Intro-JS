@@ -11,6 +11,13 @@ var guesses = 10;
 var button = document.querySelector("#buttonID");
 var input = document.querySelector("#inputID");
 var reset = document.querySelector("#restartID");
+var playing = true;
+
+function checkAttempts(){
+    if (guesses <= 0) {
+        document.getElementById("output").innerHTML="You ran out of attempts! :< ";
+    }
+}
 
 
 function checkNumber(){
@@ -42,3 +49,12 @@ function restart() {
 reset.addEventListener("click", restart);
 
 button.addEventListener("click", checkNumber);
+
+window.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        checkNumber()
+    }
+    if (event.key === 'r') {
+        restart()
+    }
+});
