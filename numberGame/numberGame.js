@@ -4,7 +4,7 @@ function getRandomInt(max) {
 
 
 var correctNumber = getRandomInt(100);
-console.log(correctNumber);
+console.log("Correct number: " + correctNumber);
 
 var guesses = 10;
 
@@ -15,27 +15,13 @@ var playing = true;
 
 function checkAttempts(){
     if (guesses <= 0) {
-        document.getElementById("output").innerHTML="You ran out of attempts! :< ";
-    }
-}
-
-
-function checkNumber(){
-    console.log(input.value)
-    console.log(correctNumber)
-    if (input.value == correctNumber) {
-        document.getElementById("output").innerHTML="Congratulations! You were able to guess the correct number with " + guesses + " attempt(s) remaining!";
+        document.getElementById("output").innerHTML="You ran out of attempts :< ! Restart to play again :> !";
+        console.log("Guesses left: " + guesses);
+        console.log("Player lost")
+        playing = false;
     } else {
-        if (input.value > correctNumber) {
-            guesses--;
-            document.getElementById("output").innerHTML="Too high! " + guesses + " Guesses left.";
-        } else {
-            guesses--;
-            document.getElementById("output").innerHTML="Too low! " + guesses + " Guesses left.";
-        }
-    }
-    if (guesses <= 0) {
-        document.getElementById("output").innerHTML="You ran out of attempts! :<";
+        console.log("Guesses left: " + guesses);
+        playing = true;
     }
 }
 
@@ -44,7 +30,31 @@ function restart() {
     guesses = 10;
     document.getElementById("output").innerHTML="";
     input.value = "";
+    playing = true;
 }
+
+function checkNumber(){
+    if (playing == true) {
+        console.log("Player input: " + input.value)
+        console.log("Correct number: " + correctNumber)
+        if (input.value == correctNumber) {
+            document.getElementById("output").innerHTML="Congratulations! You were able to guess the correct number with " + guesses + " attempt(s) remaining! Restart and try again :>";
+            console.log("Player won")
+            playing = false;
+        } else {
+            if (input.value > correctNumber) {
+                guesses--;
+                document.getElementById("output").innerHTML="Too high! " + guesses + " Guesses left.";
+                checkAttempts();
+            } else {
+                guesses--;
+                document.getElementById("output").innerHTML="Too low! " + guesses + " Guesses left.";
+                checkAttempts();
+            }
+        }
+    }
+}
+
 
 reset.addEventListener("click", restart);
 
