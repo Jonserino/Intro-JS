@@ -11,32 +11,22 @@ var guesses = 10;
 var button = document.querySelector("#buttonID");
 var input = document.querySelector("#inputID");
 var reset = document.querySelector("#restartID");
-var playing = true;
-
-window.onload = (function(onload) {
-    return function(event) {
-        onload && onload(event);
-        function timerDown() {
-            console.log("Time left: " + timer)
-            var sec = 30;
-            var timer = setInterval(function(){
-            document.getElementById("timerDisplay").innerHTML="00: " + sec;
-            sec--;
-            if (sec < 0) {
-                clearInterval(timer);
-            }
-        }, 1000);
-    }
-
-}
-}(window.onload))
+var max_time = 30
+var time_left = max_time;
+var timer_EL = document.querySelector("#timerID");
 
 function checkAttempts(){
     if (guesses <= 0) {
-        document.getElementById("output").innerHTML="You ran out of attempts :< ! Restart to play again :> ! The number was " + correctNumber;
+        document.getElementById("output").innerHTML="You ran out of attempts :< ! Restart to play again :> ! The number was: " + correctNumber;
         console.log("Guesses left: " + guesses);
         console.log("Player lost")
         playing = false;
+        if (time_left >= 0) {
+            
+            document.getElementById("output").innerHTML="You rna out of time! Please restart, the number was: " + correctNumber;
+            console.log("Player ran out of time");
+            console.log("Player lost");
+        }
     } else {
         console.log("Guesses left: " + guesses);
         playing = true;
@@ -73,9 +63,9 @@ function checkNumber(){
     }
 }
 
+timer_EL.innerHTML = "Time left: " + time_left;
 
 reset.addEventListener("click", restart);
-
 button.addEventListener("click", checkNumber);
 
 window.addEventListener('keyup', function(event) {
@@ -86,3 +76,12 @@ window.addEventListener('keyup', function(event) {
         restart()
     }
 });
+
+var timer = setInterval(myTimer, 1000); // kjører funksjonen myTimer 1 gang i sekundet
+
+function myTimer(){ 
+    if (playing = true){
+        time_left--; // reduserer time_left var med 1
+        timer_EL.innerHTML = "Time left: " + time_left; // setter tallet i time_left inn i HTML tag, timer_EL
+    }
+}
