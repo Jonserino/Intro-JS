@@ -22,7 +22,7 @@ function checkAttempts(){
         console.log("Player lost")
         playing = false;
         if (time_left >= 0) {
-            
+
             document.getElementById("output").innerHTML="You rna out of time! Please restart, the number was: " + correctNumber;
             console.log("Player ran out of time");
             console.log("Player lost");
@@ -79,7 +79,7 @@ window.addEventListener('keyup', function(event) {
 
 var timer = setInterval(myTimer, 1000); // kjører funksjonen myTimer 1 gang i sekundet
 
-function myTimer(){ 
+function myTimer(){
     if (playing = true){
         time_left--; // reduserer time_left var med 1
         timer_EL.innerHTML = "Time left: " + time_left; // setter tallet i time_left inn i HTML tag, timer_EL
