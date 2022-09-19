@@ -4,6 +4,7 @@ body {
     animation: gradient 15s ease infinite;
     height: 80vh;
     color: white;
+    text-shadow: 2px 2px grey;
 }
 
 @keyframes gradient {
@@ -21,13 +22,21 @@ body {
 input {
     margin-bottom: 10px;
     margin-top: -10px;
+    box-shadow: 2px 2px grey;
+    border-radius: 10px;
 }
 button {
     margin-bottom: 10px;
+    box-shadow: 2px 2px grey;
+    border-radius: 10px;
+}
+button:active {
+    transform: translateY(2px);
 }
 
 p {
     color: white;
+    text-shadow: 2px 2px grey;
 }
 
 .guessNumber {
